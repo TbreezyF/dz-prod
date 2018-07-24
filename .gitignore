@@ -1,0 +1,9 @@
+.env
+*.DS_Store
+.idea
+/nbproject/private/
+/nbproject/
+/node_modules/
+TODO
+*.zip
+*.yaml

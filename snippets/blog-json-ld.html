@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": "{{ blog.id }}",
+        "url": window.location.href,
+        "mainEntityOfPage": window.location.href,
+        "name": "{{ blog.title }}",
+        "author": "{{ page.author }}",
+        "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ settings.logo | img_url}}"
+            },
+            "name": "{{ shop.description }}"
+        },
+        "headline": "{{ blog.title }}",
+        "image": {
+            "@type": "ImageObject",
+            "width": 1024,
+            "height": 1024,
+            "url": "https://cdn.shopify.com/s/images/admin/no-image-large.gif"
+        },
+        "datePublished": "{{ page.published_at }}",
+        "dateModified": "{{ page.published_at }}",
+        "description": "{{ page.content }}"
+    }
+</script>

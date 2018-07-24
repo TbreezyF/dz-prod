@@ -1,0 +1,34 @@
+<!-- Dropthemizer JSON-LD for general theme SEO -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://{{shop.domain}}",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://{{shop.domain}}/search?q={query}",
+            "query-input": "required name=query"
+        }
+    }
+</script>
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{{ shop.name }}",
+        "url": "https://{{ shop.domain }}",
+        "description": "{{ page_description }}",
+        "telephone": "{{ shop.phone }}",
+        "logo": "{{ settings.logo | img_url }}",
+        "image": "{{ settings.logo | img_url }}",
+        "sameAs": [],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{shop.address.street}}",
+            "addressLocality": "{{shop.address.city}}",
+            "addressRegion": "{{shop.address.province}}",
+            "postalCode": "{{shop.address.zip}}",
+            "addressCountry": "{{shop.address.country}}"
+        }
+    }
+</script>

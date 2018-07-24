@@ -1,0 +1,30 @@
+{
+    "name": "Dropthemizer",
+    "version": "1.0.0",
+    "description": "JSON-LD & Image Optimization",
+    "main": "App.js",
+    "scripts": {
+        "start": "node App.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Edwin Ifionu",
+    "license": "ISC",
+    "dependencies": {
+        "aws-sdk": "^2.279.1",
+        "body-parser": "^1.18.3",
+        "clean-css": "^4.1.11",
+        "cookie": "^0.3.1",
+        "cors": "^2.8.4",
+        "dotenv": "^5.0.1",
+        "ejs": "^2.6.1",
+        "express": "^4.16.3",
+        "nonce": "^1.0.4",
+        "puppeteer": "^1.6.0",
+        "request-promise": "^4.2.2",
+        "sharp": "^0.20.4",
+        "uglify-js": "^3.3.28"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.5"
+    }
+}

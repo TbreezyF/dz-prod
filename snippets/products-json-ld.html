@@ -1,0 +1,31 @@
+<!-- Dropthemizer JSON-LD for Products SEO-->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@id": "{{shop.domain}}",
+        "@type": "Product",
+        "brand": {
+            "@type": "Brand",
+            "name": "n\/a"
+        },
+        "sku": "",
+        "mpn": "",
+
+        "description": "{{ product.title }}",
+        "url": window.location.href,
+        "name": "{{ product.title}}",
+        "image": "{{ product.featured_image }}",
+        "itemCondition": "http://schema.org/NewCondition",
+        "offers": [{
+            "@type": "Offer",
+            "price": "{{ product.price }}",
+            "priceCurrency": "{{shop.currency}}",
+            "itemCondition": "http://schema.org/NewCondition",
+            "url": "{{ variant.url }}",
+            "image": "{{variant.image.src}}",
+            "sku": "",
+            "mpn": "",
+            "availability": "https://schema.org/InStock"
+        }]
+    }
+</script>
