@@ -57,26 +57,24 @@ $(document).ready(function() {
     }
 
     function getScreenshot() {
-        var timer = setInterval(screenshotPayload, 500);
+        var timer = setInterval(screenshotPayload, 3000);
 
         function screenshotPayload() {
             $.get('/api/screenshot/', function(data) {
                 if (data) {
                     clearInterval(timer);
-                    setTimeout(function() {
-                        var img = document.createElement('img');
-                        img.src = 'data:image/png;base64,' + data;
-                        $('.mobile-screenshot').append(img);
-                        $('.mobile-loader').hide();
-                        $('.mobile-screenshot').show();
-                    }, 5000);
+                    var img = document.createElement('img');
+                    img.src = 'data:image/png;base64,' + data;
+                    $('.mobile-screenshot').append(img);
+                    $('.mobile-loader').hide();
+                    $('.mobile-screenshot').show();
                 }
             });
         } //END Payload
     }
 
     function poll() {
-        var timer = setInterval(finishedDropthemizing, 2000);
+        var timer = setInterval(finishedDropthemizing, 5000);
 
         function finishedDropthemizing() {
             $.get('/api/status/', function(data) {

@@ -30,7 +30,7 @@ async function start() {
     const apiKey = process.env.SHOPIFY_API_KEY;
     const apiSecret = process.env.SHOPIFY_API_SECRET;
     const scopes = ['read_themes', 'write_themes', 'read_products', 'write_products'];
-    const APP_URL = "https://53a09147.ngrok.io"; // Replace this with your HTTPS Forwarding address
+    const APP_URL = "https://dropthemizer-v1.appspot.com"; // Replace this with your HTTPS Forwarding address
 
     //Set up app view engine/static paths
     app.set('view engine', 'ejs');
@@ -451,12 +451,6 @@ async function start() {
         }
     });
 
-    let port = process.env.PORT || 8080;
-
-    app.listen(port, () => {
-        console.log('Dropthemizer is listening on port ' + port + '!');
-    });
-
     app.get('/api/optimize/', cors(), (req, res) => {
         if (req.query.url) {
             onflyOptimize.process(req.query.url)
@@ -472,4 +466,11 @@ async function start() {
             res.status(400).sendFile('404.html', { root: path.join(__dirname, 'public/pages/') });
         }
     });
+
+    let port = process.env.PORT || 8081;
+
+    app.listen(port, () => {
+        console.log('Dropthemizer is listening on port ' + port + '!');
+    });
+
 }

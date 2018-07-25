@@ -8,7 +8,14 @@ module.exports = {
                 resolve(imageData);
             });
         });
+    },
+    gen: async(image) => {
+        return await optimizeGen(image);
     }
+}
+
+async function optimizeGen(image) {
+    return await sharp(image).png().toBuffer();
 }
 
 async function getOptimizedImages(urls) {

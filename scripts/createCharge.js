@@ -8,7 +8,7 @@ module.exports = {
             application_charge: {
                 name: 'Dropthemizer Pro - JSON-LD and performance optimization',
                 price: 29.99,
-                return_url: 'https://53a09147.ngrok.io/shopify/charge/handler/',
+                return_url: 'https://dropthemizer-v1.appsot.com/shopify/charge/handler/',
                 test: true
             }
         };
