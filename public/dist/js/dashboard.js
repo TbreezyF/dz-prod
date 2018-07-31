@@ -71,6 +71,15 @@ $(document).ready(function() {
                 }
             });
         } //END Payload
+
+        setTimeout(function() {
+            clearInterval(timer);
+            var img = document.createElement('img');
+            img.src = '/Images/image.png';
+            $('.mobile-screenshot').append(img);
+            $('.mobile-loader').hide();
+            $('.mobile-screenshot').show();
+        }, 60000);
     }
 
     function poll() {

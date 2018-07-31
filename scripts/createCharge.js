@@ -6,9 +6,9 @@ module.exports = {
 
         const charge_payload = {
             application_charge: {
-                name: 'Dropthemizer Pro - JSON-LD and performance optimization',
+                name: 'Dropthemizer Pro - JSON-LD and Performance Optimization',
                 price: 29.99,
-                return_url: 'https://dropthemizer-v1.appsot.com/shopify/charge/handler/',
+                return_url: 'https://4471d911.ngrok.io/shopify/charge/handler/',
                 test: true
             }
         };

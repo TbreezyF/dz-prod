@@ -1,25 +1,30 @@
 module.exports = {
-        image: async(shop) => {
-                return new Promise(function(resolve) {
-                    const puppeteer = require('puppeteer');
-                    const imagemin = require('./imgOptimizer.js');
-                    (async() => {
-                        const browser = await puppeteer.launch({
-                            args: ['--no-sandbox']
-                        });
-                        const page = await browser.newPage();
-                        await page.setViewport({
-                            width: 375,
-                            height: 667,
-                            isMobile: true,
-                        });
-                        await page.goto('https://' + shop);
-                        const base64 = await page.screenshot({ encoding: 'base64' });
-                        const buffer = await imagemin.gen(Buffer.from(base64, 'base64'));
-                        const result = buffer.toString('base64');
-                        await browser.close();
-                        resolve(result);
-                    })();
-                });
-            } //END Image
-    } //END Module
+    image: async(shop) => {
+        const AWS = require('aws-sdk');
+
+        AWS.config.update({
+            region: "ca-central-1",
+            endpoint: "https://lambda.ca-central-1.amazonaws.com"
+        });
+
+        let lambda = new AWS.Lambda();
+
+        let payload = JSON.stringify({
+            "shop": shop
+        });
+
+        let params = {
+            FunctionName: 'dropthemizer-screenshotter',
+            InvocationType: 'RequestResponse',
+            Payload: payload
+        };
+
+        console.log('Fetching screenshot from lambda for ' + shop + '...');
+
+        let data = await lambda.invoke(params).promise();
+
+        console.log('Fetch succeeded exit (0)\n');
+
+        return JSON.parse(data.Payload);
+    }
+}

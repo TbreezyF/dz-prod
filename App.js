@@ -30,7 +30,7 @@ async function start() {
     const apiKey = process.env.SHOPIFY_API_KEY;
     const apiSecret = process.env.SHOPIFY_API_SECRET;
     const scopes = ['read_themes', 'write_themes', 'read_products', 'write_products'];
-    const APP_URL = "https://dropthemizer-v1.appspot.com"; // Replace this with your HTTPS Forwarding address
+    const APP_URL = "https://4471d911.ngrok.io"; // Replace this with your HTTPS Forwarding address
 
     //Set up app view engine/static paths
     app.set('view engine', 'ejs');
@@ -341,22 +341,19 @@ async function start() {
                     if (processedImages) {
                         console.log('Product Images Processed Successfully exit(0)!');
                     }
-
-                    if (htmlScripts && minified.dropthemized && processedImages) {
-                        console.log('\nDONE!');
-                        let updateParams = {
-                            TableName: "Dropthemizer-Users",
-                            Key: {
-                                "shop": shop
-                            },
-                            UpdateExpression: "set info.optimized = :t",
-                            ExpressionAttributeValues: {
-                                ":t": true
-                            }
-                        };
-                        await db.update(updateParams).promise();
-                        pollData.fullyOptimized = true;
-                    }
+                    console.log('\nDONE!');
+                    let updateParams = {
+                        TableName: "Dropthemizer-Users",
+                        Key: {
+                            "shop": shop
+                        },
+                        UpdateExpression: "set info.optimized = :t",
+                        ExpressionAttributeValues: {
+                            ":t": true
+                        }
+                    };
+                    await db.update(updateParams).promise();
+                    pollData.fullyOptimized = true;
                     //End Dropthemize
                 }
             });
